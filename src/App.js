@@ -20,12 +20,15 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(generateQuestion());
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
+  const [score, setScore] = useState({ correct: 0, incorrect: 0 });
 
   const answerSubmit = () => {
     if (checkAnswer(userAnswer, currentQuestion.answer)) {
       setResult("Correct!");
+      setScore({ ...score, correct: score.correct + 1 });
     } else {
       setResult(`Incorrect. The correct answer is ${currentQuestion.answer}`);
+      setScore({ ...score, incorrect: score.incorrect + 1 });
     }
     setCurrentQuestion(generateQuestion());
     setUserAnswer("");
@@ -50,6 +53,10 @@ function App() {
       <button onClick={answerSubmit}>Submit</button>
 
       {result && <p>{result}</p>}
+
+      <h3>Scoreboard</h3>
+      <p>Correct Answers: {score.correct}</p>
+      <p>Incorrect Answers: {score.incorrect}</p>
     </div>
   );
 }
