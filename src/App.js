@@ -55,8 +55,8 @@ function App() {
       {result && <p>{result}</p>}
 
       <h3>Scoreboard</h3>
-      <p>Correct Answers: {score.correct}</p>
-      <p>Incorrect Answers: {score.incorrect}</p>
+      <p>Number of Correct: {score.correct}</p>
+      <p>Number of Incorrect: {score.incorrect}</p>
     </div>
   );
 }
